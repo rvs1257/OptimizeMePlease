@@ -28,11 +28,13 @@ namespace OptimizeMePlease
             BenchmarkService benchmarkService = new BenchmarkService();
             var authors = benchmarkService.GetAuthors();
             var optimizedAuthors = benchmarkService.GetAuthors_Optimized();
+            var splitQueryAuthors = benchmarkService.GetAuthors_Optimized_SplitQuery();
             var indexedAuthors = benchmarkService.GetAuthors_Optimized_Indexed();
             var expressionAuthors = benchmarkService.GetAuthors_Optimized_Expression();
             var dapperAuthors = benchmarkService.GetAuthors_Optimized_Dapper();
 
             authors.ShouldDeepEqual(optimizedAuthors);
+            authors.ShouldDeepEqual(splitQueryAuthors);
             authors.ShouldDeepEqual(indexedAuthors);
             authors.ShouldDeepEqual(expressionAuthors);
             authors.ShouldDeepEqual(dapperAuthors);
